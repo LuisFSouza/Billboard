@@ -3,6 +3,9 @@ const express = require('express')
 //Importando o body-parser
 const bodyParser=require('body-parser')
 
+//Importando as rotas do aviso
+const routerAvisos=require('./components/Avisos/AvisosController')
+
 //inicializando o express
 const app = express()
 
@@ -17,10 +20,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 //Configurando as Rotas
-app.get("/", (req,res)=>
-{
-res.send('vai etim')
-})
+app.use(routerAvisos)
 
 //Configurando a porta
 app.listen(3000)
