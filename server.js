@@ -15,6 +15,8 @@ app.set('view engine','ejs')
 //Configurando a pasta estática
 app.use(express.static('public'))
 
+app.locals.moment=require('moment')
+
 //Configurando o body-parser
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())

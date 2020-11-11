@@ -5,8 +5,11 @@ router.get("/",(req,res)=>{
   res.send('Página inicial')
 })
 
-router.get("/avisos",(req,res)=>{
-  res.send('Página de avisos cadastrados')
+router.get("/avisos", async(req,res)=>{
+  //res.send('Página de avisos cadastrados')
+  const avisos=await Avisos.selecionarTodos()
+  //res.send(avisos)
+  res.render('avisos',{avisos})
 })
 
 router.get("/avisos/novo",(req,res)=>{
