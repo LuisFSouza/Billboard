@@ -36,4 +36,12 @@ function selecionarTodos(){
    })
 }//Fim do selecionar todos
 
- module.exports = {salvar,selecionarTodos}
+/**
+ * Função que exclui um aviso do banco de dados
+ * @param {*} id //id do aviso
+ */
+function excluir(id){
+  return db.del().from('avisos').where('id_avisos',id)
+}
+
+ module.exports = {salvar,selecionarTodos, excluir}

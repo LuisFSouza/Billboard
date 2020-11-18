@@ -27,6 +27,12 @@ router.post("/avisos/novo", async(req,res)=>{
   res.render('formulario_avisos', {msg})
 })
 
+router.get("/avisos/excluir/:id", async(req,res)=>{
+  const id= Number(req.params.id)
+  await Avisos.excluir(id);
+  res.redirect('/avisos')
+})
+
 module.exports = router
 
 
