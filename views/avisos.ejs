@@ -2,7 +2,7 @@
 <%- include ('./partials/head') %> 
 <body>
   <!--Menu-->
-  <%-include ('./partials/navbar') %>
+  <%- include ('./partials/navbar') %>
     <div class="container">
       <Br><Br>
       <a href="#"><i class="fas fa-long-arrow-alt-left"></i>Voltar</a><br><br>
@@ -10,7 +10,7 @@
         <div class="card shadow ">
           <div class="card-header bg-purple text-white pl-5 p-4">
             <h2 class="float-left card-title"> <i class="fas fa-clipboard-list"></i> Avisos cadastrados</h2>
-            <a href="/avisos/novo" class="btn btn-outline-light float-right btn-lg"><i class="fas fa-plus-circle"></i>Novo aviso</a>
+            <a href="/avisos/novo" class="btn btn-outline-light float-right btn-lg"><i class="fas fa-plus-circle"></i> Novo aviso</a>
           </div>
 
           <div class="card-body p-5">
@@ -35,7 +35,7 @@
                     <td><%= aviso.titulo %></td>
                     <td><%= moment(aviso.data).format('DD-MM-YYYY') %></td>
                     <td>
-                    <button class="btn btn-secondary" onclick="excluir(event,'<%= aviso.ID_avisos %>')" data-toggle="modal" data-target="#excluirModal" >Excluir</button>
+                    <button class="btn btn-secondary" onclick="excluir(event,'<%= aviso.ID_avisos %>')" data-toggle="modal" data-target="#excluirModal">Excluir</button>
                     <a href="avisos/editar/<%= aviso.ID_avisos %>" class="btn btn-primary">Alterar</a>
                     </td>
                   </tr>
@@ -44,8 +44,8 @@
                
               </tbody>
             </table>
-          </div><!--card-->
-        </div><!--card-body-->
+          </div><!--card-body-->
+        </div><!--card-->
     </div><!--container-->
 
     <!-- Modal -->

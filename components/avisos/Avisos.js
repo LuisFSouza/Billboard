@@ -1,3 +1,4 @@
+//conexão com banco de dados
 const db=require('../../knexfile.js')
 
 /**
@@ -7,12 +8,10 @@ const db=require('../../knexfile.js')
  * @returns {object} Mensagem de sucesso ou de erro
  */
 function salvar(aviso){
-
   return db.insert(aviso).into('avisos')
   .then( _ =>{
     return{
-      tipo:"sucesso",
-      corpo:"Dados inseridos com sucesso!"
+      tipo:"sucesso", corpo:"Dados inseridos com sucesso!"
     }
   })
   .catch(erro=>{
@@ -24,17 +23,16 @@ function salvar(aviso){
 
 /**
  * Alterar um aviso no banco de dados
- * @param {*} aviso  O aviso deve estar no seguinte formato
- * formato:{titulo: <string> ,data: <string> ,mensagem: <string>}
- * @param {*} id ID do aviso
+ * @param {object} aviso  O aviso deve estar no seguinte formato
+ * {titulo: <string> ,data: <string> ,mensagem: <string>}
+ * @param {int} id ID do aviso
  * @returns {object} Mensagem de sucesso ou de erro
  */
 function editar(aviso, id){
 return db('avisos').where('ID_avisos',id).update(aviso)
 .then( _ =>{
   return{
-    tipo:"sucesso",
-    corpo:"Aviso alterado com sucesso!"
+    tipo:"sucesso", corpo:"Aviso alterado com sucesso!"
   }
 })
 .catch(erro=>{
@@ -43,12 +41,9 @@ return db('avisos').where('ID_avisos',id).update(aviso)
 })
 }//Fim do editar
 
-
-
 /**
  * Seleciona todos os avisos cadastrados
- * @returns {object} Objeto com todos os avisos cadastrados ou 
- * uma mensagem de erro
+ * @returns {object} Objeto com todos os avisos cadastrados ou uma mensagem de erro
  */
 function selecionarTodos(){
   return db.select('*').from('avisos')
@@ -57,12 +52,12 @@ function selecionarTodos(){
   .catch(erro=>{
     return{tipo: "erro", corpo:"Erro: "+erro}
    })
-}//Fim do selecionar todos
+}//Fim do selecionarTodos
 
 /**
- * Selecona um aviso
- * @param {*} id  id do aviso que será selecionado
- * @returns {object} objeto com aviso selecionado
+ * Seleciona um aviso
+ * @param {int} id  ID do aviso que será selecionado
+ * @returns {object} Objeto com o aviso selecionado
  */
 function selecionarAviso(id){
   return db.select('*').from('avisos').where('ID_avisos',id).first()
@@ -70,15 +65,14 @@ function selecionarAviso(id){
   .catch(erro=>{
     return{tipo: "erro", corpo:"Erro: "+erro}
    })
-}//Fim do selecionar aviso 
-
+}//Fim do selecionarAviso 
 
 /**
  * Função que exclui um aviso do banco de dados
- * @param {*} id //id do aviso
+ * @param {int} id ID do aviso
  */
 function excluir(id){
-  return db.del().from('avisos').where('id_avisos',id)
+  return db.del().from('avisos').where('ID_avisos',id)
 }
 
  module.exports = 
@@ -88,4 +82,4 @@ function excluir(id){
   excluir,
   selecionarAviso,
   editar
-}
+ }
