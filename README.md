@@ -42,3 +42,4 @@ DB_DATABASE=Digite aqui o nome do banco de dados
 DB_HOST=Digite aqui o hostname do banco de dados
 ```
 
+5. Rode o sistema, ele estará na porta 3000
